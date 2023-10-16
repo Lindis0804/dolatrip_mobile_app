@@ -17,6 +17,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   build_runner: ^2.4.6
   flutter_gen_runner: 5.3.0
+  flutter_flavorizr: ^2.2.1
 
   json_serializable: ^6.7.1
 flutter:
@@ -26,6 +27,7 @@ flutter:
     - assets/images/
     - assets/icons/
 
+# region: flutter pub run build_runner build --delete-conflicting-outputs
 flutter_gen:
   output: lib/generated/
   integrations:
@@ -33,3 +35,21 @@ flutter_gen:
     flare_flutter: true
     rive: true
     lottie: true
+
+# flavor region: flutter pub run flutter_flavorizr
+flavorizr:
+  flavors:
+    prod:
+      app:
+        name: "Template"
+      android:
+        applicationId: "com.template.demo"
+      ios:
+        bundleId: "com.template.demo"
+    dev:
+      app:
+        name: "Template Dev"
+      android:
+        applicationId: "dev.template.demo"
+      ios:
+        bundleId: "dev.template.demo"

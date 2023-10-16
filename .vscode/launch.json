@@ -2,15 +2,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "template",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "template (profile mode)",
+            "name": "template dev",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "program": "lib/root/main_dev.dart"
+        },
+        {
+            "name": "template prod",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/root/main_prod.dart"
         },
         {
             "name": "template (release mode)",

@@ -1,14 +1,22 @@
-// ignore_for_file: constant_identifier_names
-
 enum Flavor {
-  DEV,
-  STAGING;
+  prod,
+  dev,
+}
 
-  static Flavor fromString(String flavor) {
-    return Flavor.values.firstWhere((e) => e.toString() == 'Flavor.$flavor');
+class F {
+  static Flavor? appFlavor;
+
+  static String get name => appFlavor?.name ?? '';
+
+  static String get title {
+    switch (appFlavor) {
+      case Flavor.prod:
+        return 'Template';
+      case Flavor.dev:
+        return 'Template Dev';
+      default:
+        return 'title';
+    }
   }
 
-  String get name {
-    return toString().split('.').last;
-  }
 }
