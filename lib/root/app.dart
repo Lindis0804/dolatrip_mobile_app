@@ -1,7 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:template/common/enums/flavors.dart';
 import 'package:template/pages/splash/splash.screen.dart';
+import 'package:template/root/app_routers.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -13,7 +13,8 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      onGenerateRoute: AppRouters.onGenRoutes,
+      initialRoute: AppRouters.splash,
     );
   }
 }
