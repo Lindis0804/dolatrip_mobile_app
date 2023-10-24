@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:template/common/enums/flavors.dart';
-import 'package:template/pages/splash/splash.screen.dart';
 import 'package:template/root/app_routers.dart';
 
 class App extends StatelessWidget {
