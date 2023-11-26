@@ -8,26 +8,7 @@ import 'package:template/common/widgets/custom_textfield.dart';
 import 'package:template/generated/assets.gen.dart';
 import 'package:template/pages/login/bloc/login.bloc.dart';
 import 'package:template/root/app_routers.dart';
-
-class LoginLifecycleObserver with WidgetsBindingObserver {
-  final LoginBloc loginBloc;
-  const LoginLifecycleObserver({required this.loginBloc});
-
-  void setupObserver() {
-    WidgetsBinding.instance!.addObserver(this);
-  }
-
-  void disposeObserver() {
-    WidgetsBinding.instance!.removeObserver(this);
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed) {
-      loginBloc.add(const Inititalize());
-    }
-  }
-}
+import 'package:logger/logger.dart';
 
 class SignInForm extends StatefulWidget {
   final LoginBloc loginBloc;
@@ -39,9 +20,9 @@ class SignInForm extends StatefulWidget {
 class _SignInFormState extends State<SignInForm> {
   final TextEditingController _passwordController = TextEditingController();
   bool _obscureText = true;
-
   @override
   Widget build(BuildContext context) {
+    print('Sign in');
     return Container(
       padding: const EdgeInsets.all(16),
       alignment: Alignment.topCenter,
@@ -72,6 +53,7 @@ class _SignInFormState extends State<SignInForm> {
           Container(
               margin: const EdgeInsets.only(top: 10, bottom: 5),
               child: NormalTextfield(
+                isObscureText: _obscureText,
                 text: 'Password',
                 suffixIcon: IconButton(
                   icon: _obscureText
@@ -142,6 +124,7 @@ void _listener(BuildContext context, LoginState state) {
   switch (state.loginStatus) {
     case LoginStatus.forgotPassword:
       Navigator.of(context).pushNamed(AppRouters.forgotPassword);
+      context.read<LoginBloc>().add(const Inititalize());
     case LoginStatus.signUp:
       Navigator.of(context).pushReplacementNamed(AppRouters.signUp);
     default:
@@ -150,14 +133,9 @@ void _listener(BuildContext context, LoginState state) {
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
-  late LoginLifecycleObserver loginObserver;
 
   @override
   Widget build(BuildContext context) {
-    loginObserver =
-        LoginLifecycleObserver(loginBloc: BlocProvider.of<LoginBloc>(context));
-    loginObserver.setupObserver();
-
     return BlocProvider<LoginBloc>(
       create: (_) => LoginBloc(),
       child: BlocListener<LoginBloc, LoginState>(
@@ -179,10 +157,5 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    loginObserver.disposeObserver();
   }
 }

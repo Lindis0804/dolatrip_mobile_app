@@ -15,7 +15,9 @@ class SignupForm extends StatefulWidget {
 
 class _SignupForm extends State<SignupForm> {
   final TextEditingController _passwordController = TextEditingController();
-  bool _obscureText = true;
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+  bool _passwordObscureText = true, _confirmPasswordObscureText = true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -68,30 +70,35 @@ class _SignupForm extends State<SignupForm> {
               ),
             ),
             Container(
-                margin: const EdgeInsets.only(bottom: 10),
-                child: NormalTextfield(
-                  text: 'Password',
-                  suffixIcon: IconButton(
-                    icon: _obscureText
-                        ? SvgPicture.asset(
-                            'assets/icons/ic_eye_off.svg',
-                            width: 20,
-                            height: 20,
-                          )
-                        : const Icon(Icons.remove_red_eye, size: 20),
-                    onPressed: () {
-                      setState(() {
-                        _obscureText = !_obscureText;
-                      });
-                    },
-                  ),
-                )),
+              margin: const EdgeInsets.only(bottom: 10),
+              child: NormalTextfield(
+                controller: _passwordController,
+                text: 'Password',
+                suffixIcon: IconButton(
+                  icon: _passwordObscureText
+                      ? SvgPicture.asset(
+                          'assets/icons/ic_eye_off.svg',
+                          width: 20,
+                          height: 20,
+                        )
+                      : const Icon(Icons.remove_red_eye, size: 20),
+                  onPressed: () {
+                    setState(() {
+                      _passwordObscureText = !_passwordObscureText;
+                    });
+                  },
+                ),
+                isObscureText: _passwordObscureText,
+              ),
+            ),
             Container(
                 margin: const EdgeInsets.only(bottom: 10),
                 child: NormalTextfield(
+                  controller: _confirmPasswordController,
+                  isObscureText: _confirmPasswordObscureText,
                   text: 'Confirm Password',
                   suffixIcon: IconButton(
-                    icon: _obscureText
+                    icon: _confirmPasswordObscureText
                         ? SvgPicture.asset(
                             'assets/icons/ic_eye_off.svg',
                             width: 20,
@@ -100,7 +107,8 @@ class _SignupForm extends State<SignupForm> {
                         : const Icon(Icons.remove_red_eye, size: 20),
                     onPressed: () {
                       setState(() {
-                        _obscureText = !_obscureText;
+                        _confirmPasswordObscureText =
+                            !_confirmPasswordObscureText;
                       });
                     },
                   ),
@@ -121,6 +129,13 @@ class _SignupForm extends State<SignupForm> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
   }
 }
 

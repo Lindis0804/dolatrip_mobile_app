@@ -3,10 +3,18 @@ import 'package:flutter/material.dart';
 class NormalTextfield extends StatelessWidget {
   final String text;
   final IconButton? suffixIcon;
-  const NormalTextfield({required this.text, this.suffixIcon});
+  final TextEditingController? controller;
+  final bool? isObscureText;
+  const NormalTextfield(
+      {required this.text,
+      this.suffixIcon,
+      this.controller,
+      this.isObscureText});
   @override
   Widget build(BuildContext context) {
     return TextField(
+      // controller: controller,
+      obscureText: isObscureText ?? true,
       decoration: InputDecoration(
           border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(
