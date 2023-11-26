@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:template/common/enums/splash_status.enum.dart';
+import 'package:template/generated/assets.gen.dart';
 import 'package:template/pages/splash/bloc/splash.bloc.dart';
 import 'package:template/root/app_routers.dart';
 
@@ -39,9 +40,14 @@ class _SplashScreenView extends StatelessWidget {
   const _SplashScreenView({super.key});
 
   @override
-  Widget build(BuildContext context) => const Scaffold(
+  Widget build(BuildContext context) => Scaffold(
         body: Center(
-          child: Text('Splash Screen'),
+          child: Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: Assets.images.splashImage.provider(),
+                    fit: BoxFit.fitHeight)),
+          ),
         ),
       );
 }

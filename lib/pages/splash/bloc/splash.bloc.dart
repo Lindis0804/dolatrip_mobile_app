@@ -45,15 +45,15 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
       ),
     );
     // if (token == null)
-    // add(
-    //   const SplashStatusChanged(
-    //     SplashStatus.unauthenticated,
-    //   ),
-    // );
+    //   add(
+    //     const SplashStatusChanged(
+    //       SplashStatus.unauthenticated,
+    //     ),
+    //   );
     // else
     add(
       const SplashStatusChanged(
-        SplashStatus.authenticated,
+        SplashStatus.unauthenticated,
       ),
     );
   }

@@ -10,6 +10,5 @@ class SplashStarted extends SplashEvent {
 
 class SplashStatusChanged extends SplashEvent {
   final SplashStatus status;
-
   const SplashStatusChanged(this.status);
 }

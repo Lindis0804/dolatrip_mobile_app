@@ -5,19 +5,31 @@
             "name": "template dev",
             "request": "launch",
             "type": "dart",
-            "program": "lib/root/main_dev.dart"
+            "program": "lib/root/main_dev.dart",
+            "args":[
+                "--flavor",
+                "dev"
+            ]
         },
         {
             "name": "template prod",
             "request": "launch",
             "type": "dart",
-            "program": "lib/root/main_prod.dart"
+            "program": "lib/root/main_prod.dart",
+            "args":[
+                "--flavor",
+                "dev"
+            ]
         },
         {
             "name": "template (release mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "release",
+            "args":[
+                "--flavor",
+                "dev"
+            ]
         }
     ]
 }

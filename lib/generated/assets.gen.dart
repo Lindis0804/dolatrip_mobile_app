@@ -8,6 +8,7 @@
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class $AssetsFontsGen {
   const $AssetsFontsGen();
@@ -51,11 +52,26 @@ class $AssetsIconsGen {
   List<AssetGenImage> get values => [icAntiem, icAnuongColor, icAnuongVip];
 }
 
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/splash_image.png
+  AssetGenImage get splashImage =>
+      const AssetGenImage('assets/images/splash_image.png');
+  AssetGenImage get logoImage => const AssetGenImage('assets/images/logo.png');
+  AssetGenImage get logoImage4x =>
+      const AssetGenImage('assets/images/logo_4x.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [splashImage];
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
 class AssetGenImage {

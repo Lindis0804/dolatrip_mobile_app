@@ -10,7 +10,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: F.title,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       onGenerateRoute: AppRouters.onGenRoutes,
       initialRoute: AppRouters.splash,
